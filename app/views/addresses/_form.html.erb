@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+<div>
+  <%= form.label :customer_id, style:"display: block" %>
+  <%= form.select :customer_id, Customer.all.collect {|u| [u.name,u.id]}, {}, class: "select" %>
+
+</div>
+
 
   <div>
     <%= form.label :name, style: "display: block" %>
