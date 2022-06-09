@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @address %>
+
+<div>
+  <%= link_to "Edit this address", edit_address_path(@address), class:"btn btn-secondary" %> 
+  <br>   <br>
+  <%= link_to "Back to addresses", addresses_path, class:"btn btn-secondary" %>
+ <br>
+  <br>
+  <%= button_to "Destroy this address", @address, method: :delete, class:"btn btn-secondary" %>
+</div>

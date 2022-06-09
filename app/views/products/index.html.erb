@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Products List</h1>
+
+<table class="table">
+     <thead>
+       <tr>
+        <th> Sku</th>
+          <th> Mrp</th>
+            <th> Quantity</th>
+            <th>Discount</th>
+            <th>Net price</th>
+
+             <th colspan="3"></th>
+          </tr>
+      </thead>
+
+      <thead>
+      <% @products.each do |product| %>
+      
+       <tr>
+        <td> <%= product.sku %></td>
+          <td> <%= product.mrp %></td>
+            <td> <%= product.quantity %></td>
+            <td><%= product.discount %></td>
+            <td><%= product.net_price %></td>
+
+            <td><%= link_to "Show this product", product, class:"btn btn-secondary" %></td>
+             <th colspan="3"></th>
+          </tr>
+          <% end %>
+      </thead>
+  
+</div>
+
+<%= link_to "New product", new_product_path, class:"btn btn-secondary" %>
+
+

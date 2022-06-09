@@ -1,0 +1,51 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Customers List</h1>
+
+<table class="table">
+     <thead>
+       <tr>
+        <th> Name</th>
+          <th> Phone</th>
+            <th> Email</th>
+            <!-- <th>Name</th>
+            <th>Phone</th> -->
+            <th>Address line1</th>
+            <th>Address line2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Pin code</th>
+             <th colspan="3"></th>
+          </tr>
+      </thead>
+     
+     <thead>
+      <% @customers.each do |customer| %>
+      <% customer.address.each do |address| %>
+       <tr>
+        <td>  <%= customer.name %> </td>
+          <td> <%= customer.phone %></td>
+            <td> <%= customer.email %></td>
+            <!-- <td> <%= address.name %></td>
+            <td> <%= address.phone %></td> -->
+            <td> <%= address.address_line1 %></td>
+            <td> <%= address.address_line2 %></td>
+            <td> <%= address.city %></td>
+            <td> <%= address.state %></td>
+             <td> <%= address.country %></td>
+             <td> <%= address.pin_code %></td>
+            
+             
+            <td><%= link_to "Show this customer", customer, class:"btn btn-secondary" %></td>
+            <th colspan="3"></th>
+
+          </tr>
+          <% end %>
+      </thead>
+       <% end %>
+     </table>
+  
+</div>
+
+<%= link_to "New customer", new_customer_path, class:"btn btn-secondary" %>
