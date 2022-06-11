@@ -15,24 +15,40 @@
           </tr>
       </thead>
 
-      <thead>
-      <% @products.each do |product| %>
       
-       <tr>
-        <td> <%= product.sku %></td>
-          <td> <%= product.mrp %></td>
-            <td> <%= product.quantity %></td>
-            <td><%= product.discount %></td>
-            <td><%= product.net_price %></td>
-
-            <td><%= link_to "Show this product", product, class:"btn btn-secondary" %></td>
-             <th colspan="3"></th>
-          </tr>
-          <% end %>
-      </thead>
   
 </div>
 
+<tbody>
+  <% total = 0 %>
+  <% @products.each do |product| %>
+  <tr>
+    <td><%= product.sku %></td>
+    <td><%= product.mrp %></td>
+    <td><%= product.quantity %></td>
+    <td><%= product.discount %></td>
+    
+    <td><%= number_to_currency(product.mrp * product.quantity - product.discount)%></td>
+    <td><%= link_to "Show this product", product, class: "btn btn-secondary" %> </td>
+    <% total = total + (product.mrp * product.quantity - product.discount) %>
+  </tr>
+  <% end %>
+</tbody>
+
+    <p>
+      <strong>Total mrp:</strong>
+      <%= Product.sum(:mrp)%>
+    </p>
+
+    <p>
+      <strong>Total Quantity:</strong>
+      <%= Product.sum(:quantity)%>
+    </p>
+
+    <p>
+      <strong>Total Net price:</strong>
+      <%= total %>
+    </p>
 <%= link_to "New product", new_product_path, class:"btn btn-secondary" %>
 
 
